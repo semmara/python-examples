@@ -4,7 +4,6 @@
 
 import subprocess as sub
 import sys
-import time as t
 import select
 
 p = sub.Popen(sys.argv[1:], stdout=sub.PIPE)
