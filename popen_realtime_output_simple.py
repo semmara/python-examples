@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+# Author: semmara
+# Description: print output while subprocess is still running line by line
+
 import subprocess as sub
 import shlex
 
