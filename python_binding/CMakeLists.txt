@@ -34,7 +34,7 @@ MESSAGE(STATUS "BOOST_INCLUDE_DIR: ${BOOST_INCLUDE_DIR}")
 
 # boost lib
 FIND_LIBRARY(BOOST_LIBRARY
-  boost_python
+  libboost_python.a
   /prod/boost/1.48.0.4/lib/
 )
 MESSAGE(STATUS "BOOST_LIBRARY: ${BOOST_LIBRARY}")
