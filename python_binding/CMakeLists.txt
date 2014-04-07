@@ -1,8 +1,8 @@
 cmake_minimum_required (VERSION 2.6)
-project (helloext)
+#project (helloext)
 
 
-SET(LIBNAME_PYTHON_BACKEND_WRAPPER "helloext" CACHE STRING "name of the plugin python wrapper or empty for no plugin")
+SET(LIBNAME "mensch" CACHE STRING "name of the plugin python wrapper or empty for no plugin")
 #SET(PLUGIN_TYPE "SHARED") # .dylib on osx
 SET(PLUGIN_TYPE "MODULE") # .so on osx (Python can only handle *.so)
 
@@ -44,9 +44,9 @@ MESSAGE(STATUS "-----------------------------------------")
 
 #if(PYTHON_INCLUDE_DIR AND BOOST_python_LIBRARY AND LIBNAME_PYTHON_BACKEND_WRAPPER)
 	ADD_DEFINITIONS("-Wall")
-	INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIR} ${PYTHON_LIBRARY} ${BOOST_INCLUDE_DIR})
-	ADD_LIBRARY(${LIBNAME_PYTHON_BACKEND_WRAPPER} ${PLUGIN_TYPE} example.cpp )
-	TARGET_LINK_LIBRARIES(${LIBNAME_PYTHON_BACKEND_WRAPPER} ${BOOST_LIBRARY} ${PYTHON_LIBRARY})
+	INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIR} ${PYTHON_LIBRARY} ${BOOST_INCLUDE_DIR} ${BOOST_LIBRARY})
+	ADD_LIBRARY(${LIBNAME} ${PLUGIN_TYPE} example.cpp )
+	TARGET_LINK_LIBRARIES(${LIBNAME} ${BOOST_LIBRARY} ${PYTHON_LIBRARY})
 #endif()
 
 

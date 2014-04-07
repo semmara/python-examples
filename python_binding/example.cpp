@@ -1,26 +1,24 @@
-#include <boost/python.hpp>
-
 /* This is just TESTCODE. It should not be used for productiv. */
 
-class Test {
-	public:
-		int add(const int, const int);
-		int mul(const int, const int);
+#include <iostream>
+class Mensch {
+    public:
+        Mensch() {
+            std::cout << "Mensch init" << std::endl;
+        }
+        void sein(bool b) {
+            if (b)
+                std::cout << "sein" << std::endl;
+            else
+                std::cout << "nicht sein" << std::endl;
+        }
 };
 
- int Test::add(const int a, const int b) {
-    return a+b;
- }
- 
- int Test::mul(const int a, const int b) {
-    return a*b;
- }
- 
- BOOST_PYTHON_MODULE(helloext) {
+#include <boost/python.hpp> 
+BOOST_PYTHON_MODULE(libmensch) {
     using namespace boost::python;
-    class_<Test>("Test", init<>())
-    .def("add", &Test::add)
-    .def("mul", &Test::mul)
+    class_<Mensch>("Mensch", init<>())
+        .def("sein", &Mensch::sein)
     ;
- }
+}
  
