@@ -3,6 +3,8 @@ cmake_minimum_required (VERSION 2.6)
 
 
 SET(LIBNAME "mensch" CACHE STRING "name of the plugin python wrapper or empty for no plugin")
+SET(LIB_FOO "foo" CACHE STRING "name of the lib foo")
+
 #SET(PLUGIN_TYPE "SHARED") # .dylib on osx
 SET(PLUGIN_TYPE "MODULE") # .so on osx (Python can only handle *.so)
 
@@ -42,8 +44,12 @@ MESSAGE(STATUS "BOOST_LIBRARY: ${BOOST_LIBRARY}")
 MESSAGE(STATUS "-----------------------------------------")
 
 
-ADD_DEFINITIONS("-Wall")
-INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIR} ${PYTHON_LIBRARY} ${BOOST_INCLUDE_DIR} ${BOOST_LIBRARY})
+ADD_DEFINITIONS("-Wall -Wextra")
+
+INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIR} ${PYTHON_LIBRARY} ${BOOST_INCLUDE_DIR})
 ADD_LIBRARY(${LIBNAME} ${PLUGIN_TYPE} example.cpp )
 TARGET_LINK_LIBRARIES(${LIBNAME} ${BOOST_LIBRARY} ${PYTHON_LIBRARY})
+
+ADD_LIBRARY(${LIB_FOO} ${PLUGIN_TYPE} example2.cpp foo.c)
+TARGET_LINK_LIBRARIES(${LIB_FOO} ${BOOST_LIBRARY} ${PYTHON_LIBRARY})
 
