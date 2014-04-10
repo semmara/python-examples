@@ -1,4 +1,3 @@
-#include <iostream>
 #include "foo.h"
 #include "foo_structs.h"
 
