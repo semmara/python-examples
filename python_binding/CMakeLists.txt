@@ -8,6 +8,7 @@ SET(LIB_FOO "foo" CACHE STRING "name of the lib foo")
 #SET(PLUGIN_TYPE "SHARED") # .dylib on osx
 SET(PLUGIN_TYPE "MODULE") # .so on osx (Python can only handle *.so)
 SET(BOOST_VERSION "1.55.0-local" CACHE STRING "used boost version")
+SET(PROD "/prod" CACHE STRING "prod dir")
 
 MESSAGE(STATUS "-----------------------------------------")
 
@@ -30,14 +31,14 @@ MESSAGE(STATUS "PYTHON_LIBRARY: ${PYTHON_LIBRARY}")
 # boost include dir
 FIND_PATH(BOOST_INCLUDE_DIR
   boost/python.hpp
-  /prod/boost/${BOOST_VERSION}/include/
+  ${PROD}/boost/${BOOST_VERSION}/include/
 )
 MESSAGE(STATUS "BOOST_INCLUDE_DIR: ${BOOST_INCLUDE_DIR}")
 
 # boost lib
 FIND_LIBRARY(BOOST_LIBRARY
   libboost_python.a
-  /prod/boost/${BOOST_VERSION}/lib/
+  ${PROD}/boost/${BOOST_VERSION}/lib/
 )
 MESSAGE(STATUS "BOOST_LIBRARY: ${BOOST_LIBRARY}")
 
