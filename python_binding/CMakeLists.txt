@@ -7,7 +7,7 @@ SET(LIB_FOO "foo" CACHE STRING "name of the lib foo")
 
 #SET(PLUGIN_TYPE "SHARED") # .dylib on osx
 SET(PLUGIN_TYPE "MODULE") # .so on osx (Python can only handle *.so)
-SET(BOOST_VERSION "1.55.0-local" CACHE STRING "used boost version")
+SET(BOOST_VERSION "1.55.0" CACHE STRING "used boost version")
 SET(PROD "/prod" CACHE STRING "prod dir")
 
 MESSAGE(STATUS "-----------------------------------------")
@@ -48,6 +48,7 @@ MESSAGE(STATUS "-----------------------------------------")
 ADD_DEFINITIONS("-Wall -Wextra")
 
 INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIR} ${PYTHON_LIBRARY} ${BOOST_INCLUDE_DIR})
+
 ADD_LIBRARY(${LIBNAME} ${PLUGIN_TYPE} example.cpp )
 TARGET_LINK_LIBRARIES(${LIBNAME} ${BOOST_LIBRARY} ${PYTHON_LIBRARY})
 

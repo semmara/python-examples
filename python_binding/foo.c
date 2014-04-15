@@ -27,3 +27,7 @@ void print_foofoo(struct foofoo ff) {
 	printf("c: %c\n", ff.c);
 }
 
+char *foo4() {
+	return "foo4";
+}
+
